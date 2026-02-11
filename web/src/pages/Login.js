@@ -1,26 +1,27 @@
-import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import './Auth.css';
+import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import "./Auth.css";
 
 function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+
     const navigate = useNavigate();
     const location = useLocation();
     const successMessage = location.state?.message;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError('');
+        setError("");
         setIsLoading(true);
 
         try {
-            const response = await fetch('http://localhost:8080/api/auth/login', {
-                method: 'POST',
+            const response = await fetch("http://localhost:8080/api/auth/login", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ email, password }),
             });
@@ -28,16 +29,12 @@ function Login() {
             const data = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.message || 'Login failed');
+                throw new Error(data.message || "Login failed");
             }
 
-            // Store token if provided
-            if (data.token) {
-                localStorage.setItem('token', data.token);
-            }
+            localStorage.setItem("token", data.token || "sample-token");
 
-            // Success! Redirect to dashboard
-            navigate('/dashboard');
+            navigate("/dashboard");
         } catch (err) {
             setError(err.message);
         } finally {
@@ -54,28 +51,50 @@ function Login() {
                         <h1 className="auth-title">Welcome Back</h1>
                         <p className="auth-subtitle">Log in to your account</p>
                     </div>
-                    
+
                     {successMessage && (
                         <div className="alert alert-success">
-                            <svg className="alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            <svg
+                                className="alert-icon"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
                             </svg>
                             {successMessage}
                         </div>
                     )}
-                    
+
                     {error && (
                         <div className="alert alert-error">
-                            <svg className="alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            <svg
+                                className="alert-icon"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
                             </svg>
                             {error}
                         </div>
                     )}
-                    
+
                     <form onSubmit={handleSubmit} className="auth-form">
                         <div className="form-group">
-                            <label htmlFor="email" className="form-label">Email Address</label>
+                            <label htmlFor="email" className="form-label">
+                                Email Address
+                            </label>
                             <input
                                 id="email"
                                 type="email"
@@ -88,11 +107,15 @@ function Login() {
                                 autoComplete="email"
                             />
                         </div>
-                        
+
                         <div className="form-group">
                             <div className="form-label-row">
-                                <label htmlFor="password" className="form-label">Password</label>
-                                <a href="/forgot-password" className="link-secondary">Forgot password?</a>
+                                <label htmlFor="password" className="form-label">
+                                    Password
+                                </label>
+                                <a href="/forgot-password" className="link-secondary">
+                                    Forgot password?
+                                </a>
                             </div>
                             <input
                                 id="password"
@@ -106,30 +129,29 @@ function Login() {
                                 autoComplete="current-password"
                             />
                         </div>
-                        
-                        <button 
-                            type="submit" 
-                            className="btn-primary"
-                            disabled={isLoading}
-                        >
+
+                        <button type="submit" className="btn-primary" disabled={isLoading}>
                             {isLoading ? (
                                 <span className="btn-loading">
-                                    <span className="spinner"></span>
-                                    Logging in...
-                                </span>
+                  <span className="spinner"></span>
+                  Logging in...
+                </span>
                             ) : (
-                                'Log In'
+                                "Log In"
                             )}
                         </button>
                     </form>
-                    
+
                     <div className="auth-footer">
                         <div className="divider">
                             <span>OR</span>
                         </div>
                         <p className="auth-link">
-                            Don't have an account? 
-                            <a href="/register" className="link-primary"> Sign up</a>
+                            Don't have an account?
+                            <a href="/register" className="link-primary">
+                                {" "}
+                                Sign up
+                            </a>
                         </p>
                     </div>
                 </div>

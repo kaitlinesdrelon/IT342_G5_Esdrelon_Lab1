@@ -1,5 +1,6 @@
 package com.it342.lab1.backend.service;
 
+import com.it342.lab1.backend.dto.LoginRequest;
 import com.it342.lab1.backend.dto.RegisterRequest;
 import com.it342.lab1.backend.entity.User;
 import com.it342.lab1.backend.repository.UserRepository;
@@ -28,5 +29,19 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         return userRepository.save(user);
+
     }
+    public User loginUser(LoginRequest request) {
+
+        User user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+            throw new RuntimeException("Invalid password");
+        }
+
+        return user;
+    }
+
+
 }
