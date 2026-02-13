@@ -13,6 +13,7 @@ Project Directory Structure Created
 Spring Boot: Backend Project Initialization
 MySQL Database Setup
 
+
 To Do:
 Mobile (Kotlin)
 Register screen
@@ -20,6 +21,7 @@ Login screen
 Dashboard/Profile screen (protected)
 Logout functionality
 Connection to the same Spring Boot backend
+
 
 
 📊 Final Progress Summary
