@@ -169,7 +169,7 @@ function Dashboard() {
             <header className="movie-header">
                 <div className="header-content">
                     <div className="header-left">
-                        <h1 className="brand">🎬 CineTrack</h1>
+                        <h1 className="brand">🎬 StreamStack</h1>
                         <nav className="main-nav">
                             <a href="#home" className="nav-link active">Home</a>
                             <a href="#movies" className="nav-link">Movies</a>
@@ -236,7 +236,7 @@ function Dashboard() {
             <section className="hero-section">
                 <div className="hero-content">
                     <span className="hero-badge">Featured</span>
-                    <h2 className="hero-title">Welcome to CineTrack</h2>
+                    <h2 className="hero-title">Welcome to StreamStack</h2>
                     <p className="hero-description">
                         Discover thousands of movies and TV shows. Watch anywhere, anytime.
                     </p>
