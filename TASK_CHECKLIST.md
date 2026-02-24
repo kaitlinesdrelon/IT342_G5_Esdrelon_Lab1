@@ -14,15 +14,16 @@ Spring Boot: Backend Project Initialization
 MySQL Database Setup
 MySQLWorkbench Setup
 Android Studio Setup (Kotlin)
+Login page for Mobile
+Register page for Mobile
+Dashboard page for mobile
 
 
 To Do:
-Mobile (Kotlin)
-Register screen
-Login screen
-Dashboard/Profile screen (protected)
-Logout functionality
+Dashboard/Profile screen (not yet protected)
+Logout functionality (no pop out)
 Connection to the same Spring Boot backend
+ Must integrate a third party Movie database API
 
 
 
@@ -31,5 +32,6 @@ Backend: ✅
 Frontend: ✅
 Dashboard: ✅
 Logout: ✅
+Mobile: not fully done
 Database: ✅
 Documentation: ✅
