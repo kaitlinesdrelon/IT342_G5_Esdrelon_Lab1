@@ -10,6 +10,8 @@ Added all documentation to /docs folder
 Project Directory Structure Created
 Spring Boot: Backend Project Initialization
 MySQL Database Setup
+MySQLWorkbench Setup
+Android Studio Setup (Kotlin)
 
 To Do:
 Dashboard/Profile page
@@ -18,5 +20,5 @@ Database
 
 📊 Final Progress Summary
 Backend: ✅
-Frontend: ✅
+Frontend (Kotlin): 
 Documentation: ✅
